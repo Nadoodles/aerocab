@@ -158,6 +158,33 @@
       background: rgba(255,31,61,0.06);
       border: 1px solid rgba(255,31,61,0.18);
     }
+    /* Language toggle */
+    .lang-toggle {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9999px;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .lang-btn {
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.4);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+    .lang-btn.active {
+      background: #FF1F3D;
+      color: white;
+      box-shadow: 0 2px 8px rgba(255,31,61,0.35);
+    }
   </style>
 </head>
 <body class="font-body-md text-body-md overflow-x-hidden">
@@ -170,16 +197,24 @@
       <span class="font-headline-md text-headline-md font-bold tracking-tight text-white">AeroCab</span>
     </div>
     <div class="hidden md:flex items-center gap-8">
-      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#services">Services</a>
-      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#rates">Rates</a>
-      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#why-us">Why Us</a>
-      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#areas">Areas</a>
+      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#services" data-i18n="navServices">Services</a>
+      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#rates" data-i18n="navRates">Rates</a>
+      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#why-us" data-i18n="navWhyUs">Why Us</a>
+      <a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#areas" data-i18n="navAreas">Areas</a>
     </div>
-    <a class="flex items-center gap-2 bg-[#FF1F3D] text-white px-5 py-2.5 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all red-glow" href="tel:2137295437">
-      <span class="material-symbols-outlined text-base">phone</span>
-      <span class="hidden sm:inline">213-729-5437</span>
-      <span class="sm:hidden">Call Now</span>
-    </a>
+    <div class="flex items-center gap-3">
+      <!-- Language toggle -->
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" id="lang-es" onclick="setLanguage('es')">ES</button>
+      </div>
+      <!-- Call button -->
+      <a class="flex items-center gap-2 bg-[#FF1F3D] text-white px-5 py-2.5 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all red-glow" href="tel:2137295437">
+        <span class="material-symbols-outlined text-base">phone</span>
+        <span class="hidden sm:inline">213-729-5437</span>
+        <span class="sm:hidden" data-i18n="navCallNow">Call Now</span>
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -190,20 +225,20 @@
     <div class="w-full h-full bg-cover bg-center parallax-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJN789u11AZBk3Azqnk5qJMrx6YiGXlnacYkk0g6GmlknhqvwH5iiqjnIi5_WDR4pRYOdg9a1YvkPGthpQODgzyUMvGdurvL2338IOPKJsk-rqVCxVAmew8RIZ3eXBCDf3-oldGlFROz9Xrh0I_zneEIAxP0DAmO4b35cABqZ0uYCLQ2Jb-yOOyllgSqeMcmiimxC_pnzAxUtIgUBv0sTgJ2coRrQOVOxTyGr8UiyAXablX3khSNCKgHDLgYc00JpYCtlhIBfhBj4f')"></div>
   </div>
   <div class="relative z-20 text-center px-container-margin-mobile max-w-4xl mx-auto">
-    <span class="inline-block text-accent font-label-md uppercase tracking-[0.35em] text-sm mb-6">Los Angeles County</span>
-    <h1 class="font-headline-lg text-white mb-6" style="font-size: clamp(42px, 7vw, 76px); line-height: 1.05; font-weight: 900; letter-spacing: -0.03em;">
+    <span class="inline-block text-accent font-label-md uppercase tracking-[0.35em] text-sm mb-6" data-i18n="heroEyebrow">Los Angeles County</span>
+    <h1 class="font-headline-lg text-white mb-6" style="font-size: clamp(42px, 7vw, 76px); line-height: 1.05; font-weight: 900; letter-spacing: -0.03em;" data-i18n-html="heroHeadline">
       Premium Transportation<br/>Across <span class="text-accent">Los Angeles</span>
     </h1>
-    <p class="text-body-lg text-white/65 max-w-2xl mx-auto mb-3">
-      Airport transfers, local rides, late-night transportation, and scheduled pickups.
+    <p class="text-body-lg text-white/65 max-w-2xl mx-auto mb-3" data-i18n="heroSub">
+      Airport transfers, local rides, late-night transportation, and scheduled pickups — available 24/7.
     </p>
-    <p class="text-sm text-white/40 font-label-md mb-10 tracking-wide">No app required · Call or text to book · Planned rides available</p>
+    <p class="text-sm text-white/40 font-label-md mb-10 tracking-wide" data-i18n="heroNote">No app required · Call or text to book · Planned rides available</p>
     <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-      <a class="w-full md:w-auto bg-[#FF1F3D] text-white px-8 py-5 rounded-xl font-label-md text-base md:text-lg hover:scale-105 active:scale-95 transition-all red-glow flex items-center justify-center gap-3 whitespace-nowrap" href="tel:2137295437">
+      <a class="w-full md:w-auto bg-[#FF1F3D] text-white px-8 py-5 rounded-xl font-label-md text-base md:text-lg hover:scale-105 active:scale-95 transition-all red-glow flex items-center justify-center gap-3 whitespace-nowrap" href="tel:2137295437" data-i18n="heroCallBtn">
         <span class="material-symbols-outlined">call</span>
-        Call Now, 213-729-5437
+        Call Now — 213-729-5437
       </a>
-      <a class="w-full md:w-auto px-10 py-5 rounded-xl font-label-md text-lg glass-card text-white hover:bg-white/8 transition-all flex items-center justify-center gap-3" href="sms:2137295437">
+      <a class="w-full md:w-auto px-10 py-5 rounded-xl font-label-md text-lg glass-card text-white hover:bg-white/8 transition-all flex items-center justify-center gap-3" href="sms:2137295437" data-i18n="heroTextBtn">
         <span class="material-symbols-outlined">sms</span>
         Text to Book
       </a>
@@ -217,23 +252,23 @@
     <div class="flex flex-wrap justify-center md:justify-between items-center gap-x-6 gap-y-3">
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-accent text-base" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-        <span class="font-label-md text-white/65 text-sm">Available 24/7</span>
+        <span class="font-label-md text-white/65 text-sm" data-i18n="proof1">Available 24/7</span>
       </div>
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-accent text-base" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-        <span class="font-label-md text-white/65 text-sm">Fast Response Times</span>
+        <span class="font-label-md text-white/65 text-sm" data-i18n="proof2">Fast Response Times</span>
       </div>
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-accent text-base" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-        <span class="font-label-md text-white/65 text-sm">Local Los Angeles Driver</span>
+        <span class="font-label-md text-white/65 text-sm" data-i18n="proof3">Local Los Angeles Driver</span>
       </div>
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-accent text-base" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-        <span class="font-label-md text-white/65 text-sm">Airport Transportation</span>
+        <span class="font-label-md text-white/65 text-sm" data-i18n="proof4">Airport Transportation</span>
       </div>
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-accent text-base" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-        <span class="font-label-md text-white/65 text-sm">All of LA County</span>
+        <span class="font-label-md text-white/65 text-sm" data-i18n="proof5">All of LA County</span>
       </div>
     </div>
   </div>
@@ -243,150 +278,134 @@
 <section class="py-stack-lg bg-surface" id="about">
   <div class="max-w-screen-2xl mx-auto px-container-margin-mobile md:px-container-margin-desktop">
     <div class="max-w-3xl mx-auto text-center reveal">
-      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block">About AeroCab</span>
-      <h2 class="font-headline-lg text-white mb-10" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;">Who We Are</h2>
+      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block" data-i18n="aboutEyebrow">About AeroCab</span>
+      <h2 class="font-headline-lg text-white mb-10" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;" data-i18n="aboutHeadline">Who We Are</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       <div class="glass-card rounded-2xl p-8 reveal">
         <span class="material-symbols-outlined text-accent text-3xl mb-4 block" style="font-variation-settings: 'FILL' 1;">storefront</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Our Story</h3>
-        <p class="text-white/55 leading-relaxed">
-          <!-- PLACEHOLDER: Tell your customers who you are and when AeroCab started. Example: "AeroCab was founded in [year] with one goal: to give Los Angeles a better way to get around. We started small — one driver, one car, and a commitment to showing up on time." -->
-          [Add your story here — when AeroCab started, why you started it, and what makes this business personal to you.]
-        </p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="storyTitle">Our Story</h3>
+        <p class="text-white/55 leading-relaxed" data-i18n="storyText">[Add your story here — when AeroCab started, why you started it, and what makes this business personal to you.]</p>
       </div>
       <div class="glass-card rounded-2xl p-8 reveal reveal-delay-1">
         <span class="material-symbols-outlined text-accent text-3xl mb-4 block" style="font-variation-settings: 'FILL' 1;">handshake</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Our Mission</h3>
-        <p class="text-white/55 leading-relaxed">
-          <!-- PLACEHOLDER: Write your mission statement. Example: "To provide every rider in Los Angeles with dependable, professional transportation — without the surge pricing, without the app, and without the hassle." -->
-          [Write your mission statement here — what promise do you make to every rider who calls AeroCab?]
-        </p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="missionTitle">Our Mission</h3>
+        <p class="text-white/55 leading-relaxed" data-i18n="missionText">[Write your mission statement here — what promise do you make to every rider who calls AeroCab?]</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services Section: Uniform Grid -->
+<!-- Services -->
 <section class="py-stack-lg bg-surface-container-low" id="services">
   <div class="max-w-screen-2xl mx-auto px-container-margin-mobile md:px-container-margin-desktop">
     <div class="mb-14 reveal">
-      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block">What We Offer</span>
-      <h2 class="font-headline-lg text-white" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;">Transportation Services</h2>
+      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block" data-i18n="servicesEyebrow">What We Offer</span>
+      <h2 class="font-headline-lg text-white" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;" data-i18n="servicesHeadline">Transportation Services</h2>
     </div>
-
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Airport Transportation -->
       <div class="glass-card p-7 rounded-2xl group hover:bg-white/5 transition-all reveal">
         <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent transition-all duration-300">
           <span class="material-symbols-outlined text-accent group-hover:text-white transition-colors" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
         </div>
-        <h3 class="font-headline-md text-headline-md text-white mb-2">Airport Transportation</h3>
-        <p class="text-white/50 text-sm leading-relaxed">Punctual pickups and drop-offs for LAX, Burbank (BUR), and Long Beach (LGB). No surge pricing, no hidden fees.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-2" data-i18n="s1Title">Airport Transportation</h3>
+        <p class="text-white/50 text-sm leading-relaxed" data-i18n="s1Desc">Punctual pickups and drop-offs for LAX, Burbank (BUR), and Long Beach (LGB). No surge pricing, no hidden fees.</p>
       </div>
-      <!-- Local Rides -->
       <div class="glass-card p-7 rounded-2xl group hover:bg-white/5 transition-all reveal reveal-delay-1">
         <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent transition-all duration-300">
           <span class="material-symbols-outlined text-accent group-hover:text-white transition-colors" style="font-variation-settings: 'FILL' 1;">directions_car</span>
         </div>
-        <h3 class="font-headline-md text-headline-md text-white mb-2">Local Rides</h3>
-        <p class="text-white/50 text-sm leading-relaxed">Reliable transportation anywhere in Los Angeles County, any time of day or night.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-2" data-i18n="s2Title">Local Rides</h3>
+        <p class="text-white/50 text-sm leading-relaxed" data-i18n="s2Desc">Reliable transportation anywhere in Los Angeles County, any time of day or night.</p>
       </div>
-      <!-- Late Night -->
       <div class="glass-card p-7 rounded-2xl group hover:bg-white/5 transition-all reveal reveal-delay-2">
         <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent transition-all duration-300">
           <span class="material-symbols-outlined text-accent group-hover:text-white transition-colors" style="font-variation-settings: 'FILL' 1;">nights_stay</span>
         </div>
-        <h3 class="font-headline-md text-headline-md text-white mb-2">Late Night</h3>
-        <p class="text-white/50 text-sm leading-relaxed">Safe, dependable transport after hours. We operate every night of the week, including weekends and holidays.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-2" data-i18n="s3Title">Late Night</h3>
+        <p class="text-white/50 text-sm leading-relaxed" data-i18n="s3Desc">Safe, dependable transport after hours. We operate every night of the week, including weekends and holidays.</p>
       </div>
-      <!-- Scheduled Pickups -->
       <div class="glass-card p-7 rounded-2xl group hover:bg-white/5 transition-all reveal">
         <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent transition-all duration-300">
           <span class="material-symbols-outlined text-accent group-hover:text-white transition-colors" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
         </div>
-        <h3 class="font-headline-md text-headline-md text-white mb-2">Scheduled Pickups</h3>
-        <p class="text-white/50 text-sm leading-relaxed">Plan ahead and book your ride in advance. Medical appointments, flights, events.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-2" data-i18n="s4Title">Scheduled Pickups</h3>
+        <p class="text-white/50 text-sm leading-relaxed" data-i18n="s4Desc">Plan ahead and book your ride in advance. Medical appointments, flights, events — we'll be there on time.</p>
       </div>
-      <!-- Food Delivery -->
       <div class="glass-card p-7 rounded-2xl group hover:bg-white/5 transition-all reveal reveal-delay-1">
         <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent transition-all duration-300">
           <span class="material-symbols-outlined text-accent group-hover:text-white transition-colors" style="font-variation-settings: 'FILL' 1;">restaurant</span>
         </div>
-        <h3 class="font-headline-md text-headline-md text-white mb-2">Food Delivery</h3>
-        <p class="text-white/50 text-sm leading-relaxed">Local food and package pickups delivered with care anywhere in the Los Angeles area.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-2" data-i18n="s5Title">Food Delivery</h3>
+        <p class="text-white/50 text-sm leading-relaxed" data-i18n="s5Desc">Local food and package pickups delivered with care anywhere in the Los Angeles area.</p>
       </div>
-      <!-- Alcohol Delivery -->
       <div class="glass-card p-7 rounded-2xl group hover:bg-white/5 transition-all reveal reveal-delay-2">
         <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent transition-all duration-300">
           <span class="material-symbols-outlined text-accent group-hover:text-white transition-colors" style="font-variation-settings: 'FILL' 1;">liquor</span>
         </div>
-        <h3 class="font-headline-md text-headline-md text-white mb-2">Alcohol Delivery</h3>
-        <p class="text-white/50 text-sm leading-relaxed">Convenient alcohol delivery within the Los Angeles area. Call to check availability.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-2" data-i18n="s6Title">Alcohol Delivery</h3>
+        <p class="text-white/50 text-sm leading-relaxed" data-i18n="s6Desc">Convenient alcohol delivery within the Los Angeles area. Call to check availability.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Rates Section -->
+<!-- Rates -->
 <section class="py-stack-lg bg-surface" id="rates">
   <div class="max-w-screen-2xl mx-auto px-container-margin-mobile md:px-container-margin-desktop">
     <div class="mb-14 reveal">
-      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block">Transparent Pricing</span>
-      <h2 class="font-headline-lg text-white" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;">Simple, Flat Rates</h2>
-      <p class="text-white/50 mt-4 text-lg max-w-xl">No surge pricing. No hidden fees. What you see is what you pay.</p>
+      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block" data-i18n="ratesEyebrow">Transparent Pricing</span>
+      <h2 class="font-headline-lg text-white" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;" data-i18n="ratesHeadline">Simple, Flat Rates</h2>
+      <p class="text-white/50 mt-4 text-lg max-w-xl" data-i18n="ratesSub">No surge pricing. No hidden fees. What you see is what you pay.</p>
     </div>
-
-    <!-- Rate cards -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10 reveal">
       <div class="rate-card rounded-2xl p-6 text-center">
-        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3">Up to</p>
+        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3" data-i18n="rateUpTo">Up to</p>
         <p class="text-white font-black mb-1" style="font-size: 40px; line-height: 1; font-family: 'Plus Jakarta Sans';">$12</p>
-        <p class="text-accent font-label-md text-sm mt-3">3 miles</p>
+        <p class="text-accent font-label-md text-sm mt-3" data-i18n="rate1Miles">3 miles</p>
       </div>
       <div class="rate-card rounded-2xl p-6 text-center">
-        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3">Up to</p>
+        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3" data-i18n="rateUpTo">Up to</p>
         <p class="text-white font-black mb-1" style="font-size: 40px; line-height: 1; font-family: 'Plus Jakarta Sans';">$14</p>
-        <p class="text-accent font-label-md text-sm mt-3">4 miles</p>
+        <p class="text-accent font-label-md text-sm mt-3" data-i18n="rate2Miles">4 miles</p>
       </div>
       <div class="rate-card rounded-2xl p-6 text-center">
-        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3">Up to</p>
+        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3" data-i18n="rateUpTo">Up to</p>
         <p class="text-white font-black mb-1" style="font-size: 40px; line-height: 1; font-family: 'Plus Jakarta Sans';">$18</p>
-        <p class="text-accent font-label-md text-sm mt-3">5 miles</p>
+        <p class="text-accent font-label-md text-sm mt-3" data-i18n="rate3Miles">5 miles</p>
       </div>
       <div class="rate-card rounded-2xl p-6 text-center">
-        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3">Up to</p>
+        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3" data-i18n="rateUpTo">Up to</p>
         <p class="text-white font-black mb-1" style="font-size: 40px; line-height: 1; font-family: 'Plus Jakarta Sans';">$20</p>
-        <p class="text-accent font-label-md text-sm mt-3">6 miles</p>
+        <p class="text-accent font-label-md text-sm mt-3" data-i18n="rate4Miles">6 miles</p>
       </div>
       <div class="rate-card rounded-2xl p-6 text-center col-span-2 md:col-span-1">
-        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3">Up to</p>
+        <p class="text-white/40 text-xs font-label-md uppercase tracking-widest mb-3" data-i18n="rateUpTo">Up to</p>
         <p class="text-white font-black mb-1" style="font-size: 40px; line-height: 1; font-family: 'Plus Jakarta Sans';">$30</p>
-        <p class="text-accent font-label-md text-sm mt-3">10 miles</p>
+        <p class="text-accent font-label-md text-sm mt-3" data-i18n="rate5Miles">10 miles</p>
       </div>
     </div>
-
-    <!-- How to Book callout -->
+    <!-- How to Book -->
     <div class="booking-callout rounded-2xl p-8 md:p-10 reveal reveal-delay-1">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
-          <h3 class="font-headline-md text-headline-md text-white mb-4">How to Book a Ride</h3>
-          <p class="text-white/55 leading-relaxed">AeroCab does not use an app. All rides are booked directly by calling or texting. Planned rides are available.</p>
+          <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="howToBookTitle">How to Book a Ride</h3>
+          <p class="text-white/55 leading-relaxed" data-i18n="howToBookDesc">AeroCab does not use an app. All rides are booked directly by calling or texting. Planned rides are available — call ahead to schedule your pickup in advance.</p>
         </div>
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">call</span>
-            <span class="text-white/75">Call <strong class="text-white">213-729-5437</strong> to book immediately</span>
+            <span class="material-symbols-outlined text-accent shrink-0" style="font-variation-settings: 'FILL' 1;">call</span>
+            <span class="text-white/75" data-i18n-html="bookLine1">Call <strong class="text-white">213-729-5437</strong> to book immediately</span>
           </div>
           <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">sms</span>
-            <span class="text-white/75">Text <strong class="text-white">213-729-5437</strong> to schedule a ride</span>
+            <span class="material-symbols-outlined text-accent shrink-0" style="font-variation-settings: 'FILL' 1;">sms</span>
+            <span class="text-white/75" data-i18n-html="bookLine2">Text <strong class="text-white">213-729-5437</strong> to schedule a ride</span>
           </div>
           <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">event</span>
-            <span class="text-white/75">Planned rides available, book days in advance</span>
+            <span class="material-symbols-outlined text-accent shrink-0" style="font-variation-settings: 'FILL' 1;">event</span>
+            <span class="text-white/75" data-i18n="bookLine3">Planned rides available — book days in advance</span>
           </div>
-          <a class="mt-2 inline-flex items-center gap-3 bg-[#FF1F3D] text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-105 active:scale-95 transition-all red-glow w-fit whitespace-nowrap" href="tel:2137295437">
+          <a class="mt-2 inline-flex items-center gap-3 bg-[#FF1F3D] text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-105 active:scale-95 transition-all red-glow w-fit whitespace-nowrap" href="tel:2137295437" data-i18n="bookCallBtn">
             <span class="material-symbols-outlined text-base">call</span>
             Call 213-729-5437
           </a>
@@ -400,79 +419,72 @@
 <section class="py-stack-lg bg-surface-container-low" id="why-us">
   <div class="max-w-screen-2xl mx-auto px-container-margin-mobile md:px-container-margin-desktop">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
       <!-- Logo card -->
       <div class="logo-card rounded-3xl h-[440px] flex items-center justify-center p-10 relative overflow-hidden reveal">
         <div class="absolute top-0 right-0 w-72 h-72 bg-accent opacity-5 rounded-full blur-[80px] pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-56 h-56 bg-primary opacity-4 rounded-full blur-[60px] pointer-events-none"></div>
-        <!-- Logo image — save your logo as logo.png in this folder -->
         <img
-          src="logo.PNG"
+          src="logo.png"
           alt="AeroCab"
           class="relative z-10 max-w-full max-h-full object-contain drop-shadow-2xl"
           onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
         />
-        <!-- Fallback shown if logo.png is missing -->
         <div id="logo-fallback" class="relative z-10 flex-col items-center gap-3 text-center" style="display:none;">
           <span class="material-symbols-outlined text-accent" style="font-size: 80px; font-variation-settings: 'FILL' 1;">directions_car</span>
           <span class="text-white font-black text-3xl" style="font-family: 'Plus Jakarta Sans';">AeroCab</span>
-          <span class="text-white/40 text-sm">(Add logo.png to display your logo)</span>
         </div>
       </div>
-
-      <!-- Why choose content -->
+      <!-- Content -->
       <div class="reveal reveal-delay-1">
-        <span class="text-accent font-label-md uppercase tracking-[0.25em] text-sm">Why Choose Us</span>
-        <h2 class="font-headline-lg text-white mt-4 mb-8" style="font-size: clamp(32px, 4.5vw, 52px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1;">
+        <span class="text-accent font-label-md uppercase tracking-[0.25em] text-sm" data-i18n="whyEyebrow">Why Choose Us</span>
+        <h2 class="font-headline-lg text-white mt-4 mb-8" style="font-size: clamp(32px, 4.5vw, 52px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1;" data-i18n="whyHeadline">
           Why Los Angeles Riders Call AeroCab
         </h2>
-
         <div class="flex flex-col gap-5 mb-10">
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-accent text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             <div>
-              <p class="text-white font-semibold">No app, no surge pricing</p>
-              <p class="text-white/50 text-sm mt-0.5">Book directly by phone or text. No algorithms inflating your fare.</p>
+              <p class="text-white font-semibold" data-i18n="why1Title">No app, no surge pricing</p>
+              <p class="text-white/50 text-sm mt-0.5" data-i18n="why1Desc">Book directly by phone or text. No algorithms inflating your fare.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-accent text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             <div>
-              <p class="text-white font-semibold">Available 24 hours, 7 days a week</p>
-              <p class="text-white/50 text-sm mt-0.5">Day, night, weekends, holidays.</p>
+              <p class="text-white font-semibold" data-i18n="why2Title">Available 24 hours, 7 days a week</p>
+              <p class="text-white/50 text-sm mt-0.5" data-i18n="why2Desc">Day, night, weekends, holidays — your driver is always ready.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-accent text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             <div>
-              <p class="text-white font-semibold">Planned rides available</p>
-              <p class="text-white/50 text-sm mt-0.5">Need a ride tomorrow or next week? Call ahead and it's handled.</p>
+              <p class="text-white font-semibold" data-i18n="why3Title">Planned rides available</p>
+              <p class="text-white/50 text-sm mt-0.5" data-i18n="why3Desc">Need a ride tomorrow or next week? Call ahead and it's handled.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-accent text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             <div>
-              <p class="text-white font-semibold">Flat rates, no surprises</p>
-              <p class="text-white/50 text-sm mt-0.5">Simple, transparent pricing. You know the cost before you ride.</p>
+              <p class="text-white font-semibold" data-i18n="why4Title">Flat rates, no surprises</p>
+              <p class="text-white/50 text-sm mt-0.5" data-i18n="why4Desc">Simple, transparent pricing. You know the cost before you ride.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-accent text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             <div>
-              <p class="text-white font-semibold">Local driver who knows Los Angeles</p>
-              <p class="text-white/50 text-sm mt-0.5">Every route from DTLA to Santa Monica, LAX to Pasadena.</p>
+              <p class="text-white font-semibold" data-i18n="why5Title">Local driver who knows Los Angeles</p>
+              <p class="text-white/50 text-sm mt-0.5" data-i18n="why5Desc">Every route from DTLA to Santa Monica, LAX to Pasadena.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-accent text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             <div>
-              <p class="text-white font-semibold">Fully licensed and insured</p>
-              <p class="text-white/50 text-sm mt-0.5">Every ride is covered. Your safety is not optional.</p>
+              <p class="text-white font-semibold" data-i18n="why6Title">Fully licensed and insured</p>
+              <p class="text-white/50 text-sm mt-0.5" data-i18n="why6Desc">Every ride is covered. Your safety is not optional.</p>
             </div>
           </div>
         </div>
-
-        <a class="inline-flex items-center gap-3 bg-[#FF1F3D] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all red-glow whitespace-nowrap" href="tel:2137295437">
+        <a class="inline-flex items-center gap-3 bg-[#FF1F3D] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all red-glow whitespace-nowrap" href="tel:2137295437" data-i18n="whyCallBtn">
           <span class="material-symbols-outlined">call</span>
           Call 213-729-5437
         </a>
@@ -485,8 +497,8 @@
 <section class="py-stack-lg bg-surface" id="areas">
   <div class="max-w-screen-2xl mx-auto px-container-margin-mobile md:px-container-margin-desktop">
     <div class="text-center mb-12 reveal">
-      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block">Where We Go</span>
-      <h2 class="font-headline-lg text-white" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em;">
+      <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block" data-i18n="areasEyebrow">Where We Go</span>
+      <h2 class="font-headline-lg text-white" style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em;" data-i18n-html="areasHeadline">
         Serving All of <span class="text-accent">Los Angeles</span>
       </h2>
     </div>
@@ -502,7 +514,7 @@
       <span class="px-5 py-2.5 rounded-full bg-surface-container-low border border-white/5 font-label-md text-white/70 hover:text-white hover:border-accent/40 transition-all cursor-default">Glendale</span>
       <span class="px-5 py-2.5 rounded-full bg-surface-container-low border border-white/5 font-label-md text-white/70 hover:text-white hover:border-accent/40 transition-all cursor-default">Long Beach</span>
       <span class="px-5 py-2.5 rounded-full bg-surface-container-low border border-white/5 font-label-md text-white/70 hover:text-white hover:border-accent/40 transition-all cursor-default">Burbank</span>
-      <span class="px-5 py-2.5 rounded-full bg-accent/15 border border-accent/35 font-label-md text-white">+ All LA County</span>
+      <span class="px-5 py-2.5 rounded-full bg-accent/15 border border-accent/35 font-label-md text-white" data-i18n="areasPlus">+ All LA County</span>
     </div>
   </div>
 </section>
@@ -511,17 +523,16 @@
 <section class="py-stack-lg bg-surface-container-low" id="location">
   <div class="max-w-screen-2xl mx-auto px-container-margin-mobile md:px-container-margin-desktop">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Address info -->
       <div class="reveal">
-        <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block">Find Us</span>
-        <h2 class="font-headline-lg text-white mb-8" style="font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;">Our Location</h2>
+        <span class="text-accent font-label-md uppercase tracking-widest text-sm mb-4 block" data-i18n="locationEyebrow">Find Us</span>
+        <h2 class="font-headline-lg text-white mb-8" style="font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;" data-i18n="locationHeadline">Our Location</h2>
         <div class="flex flex-col gap-6">
           <div class="flex items-start gap-4">
             <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
               <span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">location_on</span>
             </div>
             <div>
-              <p class="text-white font-semibold mb-1">Address</p>
+              <p class="text-white font-semibold mb-1" data-i18n="locationAddrLabel">Address</p>
               <p class="text-white/60 leading-relaxed">1645 W 36th Pl<br/>Los Angeles, CA 90018</p>
             </div>
           </div>
@@ -530,8 +541,8 @@
               <span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">schedule</span>
             </div>
             <div>
-              <p class="text-white font-semibold mb-1">Hours</p>
-              <p class="text-white/60">Open 24 hours, 7 days a week</p>
+              <p class="text-white font-semibold mb-1" data-i18n="locationHoursLabel">Hours</p>
+              <p class="text-white/60" data-i18n="locationHours">Open 24 hours, 7 days a week</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
@@ -539,22 +550,16 @@
               <span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">call</span>
             </div>
             <div>
-              <p class="text-white font-semibold mb-1">Phone</p>
+              <p class="text-white font-semibold mb-1" data-i18n="locationPhoneLabel">Phone</p>
               <a class="text-accent font-bold text-lg hover:text-white transition-colors" href="tel:2137295437">213-729-5437</a>
             </div>
           </div>
         </div>
-        <a
-          class="mt-8 inline-flex items-center gap-3 glass-card text-white px-6 py-3.5 rounded-xl font-label-md text-sm hover:bg-white/8 transition-all"
-          href="https://maps.google.com/maps?q=1645+W+36th+Pl,+Los+Angeles,+CA+90018"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="mt-8 inline-flex items-center gap-3 glass-card text-white px-6 py-3.5 rounded-xl font-label-md text-sm hover:bg-white/8 transition-all" href="https://maps.google.com/maps?q=1645+W+36th+Pl,+Los+Angeles,+CA+90018" target="_blank" rel="noopener noreferrer" data-i18n="locationDirections">
           <span class="material-symbols-outlined text-accent text-base" style="font-variation-settings: 'FILL' 1;">open_in_new</span>
           Get Directions in Google Maps
         </a>
       </div>
-      <!-- Map embed -->
       <div class="rounded-2xl overflow-hidden border border-white/8 h-[380px] reveal reveal-delay-1">
         <iframe
           src="https://maps.google.com/maps?q=1645+W+36th+Pl,+Los+Angeles,+CA+90018&output=embed"
@@ -575,12 +580,10 @@
   <div class="absolute inset-0" style="background: #04020a;"></div>
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] rounded-full pointer-events-none" style="background: radial-gradient(ellipse, rgba(255,31,61,0.07) 0%, transparent 70%);"></div>
   <div class="relative z-10 text-center px-container-margin-mobile">
-    <p class="text-accent font-label-md uppercase tracking-[0.4em] text-sm mb-8">Available 24 Hours · Los Angeles County</p>
-    <a class="phone-billboard text-white hover:text-accent transition-colors block mb-6" href="tel:2137295437">
-      213-729-5437
-    </a>
-    <p class="text-white/30 text-lg mb-12 font-body-md">Call or text anytime</p>
-    <a class="inline-flex items-center gap-3 bg-[#FF1F3D] text-white px-14 py-5 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-all red-glow" href="tel:2137295437">
+    <p class="text-accent font-label-md uppercase tracking-[0.4em] text-sm mb-8" data-i18n="billboardEyebrow">Available 24 Hours · Los Angeles County</p>
+    <a class="phone-billboard text-white hover:text-accent transition-colors block mb-6" href="tel:2137295437">213-729-5437</a>
+    <p class="text-white/30 text-lg mb-12 font-body-md" data-i18n="billboardSub">Call or text anytime — your ride is ready</p>
+    <a class="inline-flex items-center gap-3 bg-[#FF1F3D] text-white px-14 py-5 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-all red-glow" href="tel:2137295437" data-i18n="billboardBtn">
       <span class="material-symbols-outlined">call</span>
       Call Now
     </a>
@@ -591,79 +594,230 @@
 <footer class="w-full pt-16 pb-10 bg-surface-container-lowest border-t border-white/5">
   <div class="max-w-screen-2xl mx-auto px-container-margin-mobile md:px-container-margin-desktop">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-      <!-- Brand -->
       <div>
         <div class="flex items-center gap-2 mb-4">
           <span class="material-symbols-outlined text-accent text-2xl" style="font-variation-settings: 'FILL' 1;">directions_car</span>
           <span class="font-bold text-xl text-white">AeroCab</span>
         </div>
-        <p class="text-white/45 font-body-md text-sm mb-2 leading-relaxed">Premium transportation across Los Angeles County, available 24 hours a day.</p>
+        <p class="text-white/45 font-body-md text-sm mb-2 leading-relaxed" data-i18n="footerDesc">Premium transportation across Los Angeles County, available 24 hours a day.</p>
         <p class="text-white/35 text-sm mb-5">1645 W 36th Pl, Los Angeles, CA 90018</p>
         <a class="text-primary font-black text-2xl hover:text-white transition-colors" href="tel:2137295437">213-729-5437</a>
       </div>
-      <!-- Quick Links -->
       <div class="flex flex-col gap-3">
-        <span class="font-label-md text-white uppercase tracking-widest text-xs mb-2">Quick Links</span>
-        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#services">Services</a>
-        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#rates">Rates</a>
-        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#why-us">Why Choose AeroCab</a>
-        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#areas">Service Areas</a>
-        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#location">Location</a>
+        <span class="font-label-md text-white uppercase tracking-widest text-xs mb-2" data-i18n="footerLinksTitle">Quick Links</span>
+        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#services" data-i18n="navServices">Services</a>
+        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#rates" data-i18n="navRates">Rates</a>
+        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#why-us" data-i18n="footerWhyUs">Why Choose AeroCab</a>
+        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#areas" data-i18n="footerAreas">Service Areas</a>
+        <a class="text-white/45 hover:text-white transition-colors font-body-md" href="#location" data-i18n="footerLocation">Location</a>
       </div>
-      <!-- Availability -->
       <div>
-        <span class="font-label-md text-white uppercase tracking-widest text-xs mb-4 block">Availability</span>
+        <span class="font-label-md text-white uppercase tracking-widest text-xs mb-4 block" data-i18n="footerAvailTitle">Availability</span>
         <div class="glass-card p-4 rounded-xl flex items-center justify-between mb-3">
-          <span class="text-white/45 text-sm">Sunday – Saturday</span>
-          <span class="text-primary font-bold text-sm">24 Hours</span>
+          <span class="text-white/45 text-sm" data-i18n="footerDays">Sunday – Saturday</span>
+          <span class="text-primary font-bold text-sm" data-i18n="footer24h">24 Hours</span>
         </div>
         <div class="glass-card p-4 rounded-xl flex items-center justify-between mb-3">
-          <span class="text-white/45 text-sm">Booking</span>
-          <span class="text-primary font-bold text-sm">Call or Text</span>
+          <span class="text-white/45 text-sm" data-i18n="footerBooking">Booking</span>
+          <span class="text-primary font-bold text-sm" data-i18n="footerCallOrText">Call or Text</span>
         </div>
         <div class="glass-card p-4 rounded-xl flex items-center justify-between">
-          <span class="text-white/45 text-sm">Planned Rides</span>
-          <span class="text-primary font-bold text-sm">Available</span>
+          <span class="text-white/45 text-sm" data-i18n="footerPlanned">Planned Rides</span>
+          <span class="text-primary font-bold text-sm" data-i18n="footerAvailable">Available</span>
         </div>
       </div>
     </div>
     <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-white/25 text-xs">© 2025 AeroCab Los Angeles · 1645 W 36th Pl, Los Angeles, CA 90018 · All drivers fully licensed and insured.</p>
+      <p class="text-white/25 text-xs" data-i18n="footerCopyright">© 2025 AeroCab Los Angeles · 1645 W 36th Pl, Los Angeles, CA 90018 · All drivers fully licensed and insured.</p>
       <div class="flex gap-6">
-        <a class="text-white/25 hover:text-white/60 text-xs transition-colors" href="#">Privacy Policy</a>
-        <a class="text-white/25 hover:text-white/60 text-xs transition-colors" href="#">Terms of Service</a>
+        <a class="text-white/25 hover:text-white/60 text-xs transition-colors" href="#" data-i18n="footerPrivacy">Privacy Policy</a>
+        <a class="text-white/25 hover:text-white/60 text-xs transition-colors" href="#" data-i18n="footerTerms">Terms of Service</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-  // Parallax hero
-  window.addEventListener('scroll', function() {
+  /* ─── Translations ─── */
+  const translations = {
+    en: {
+      pageTitle: "AeroCab | Premium Transportation Los Angeles",
+      navServices: "Services", navRates: "Rates", navWhyUs: "Why Us", navAreas: "Areas", navCallNow: "Call Now",
+      heroEyebrow: "Los Angeles County",
+      heroHeadline: 'Premium Transportation<br/>Across <span class="text-accent">Los Angeles</span>',
+      heroSub: "Airport transfers, local rides, late-night transportation, and scheduled pickups — available 24/7.",
+      heroNote: "No app required · Call or text to book · Planned rides available",
+      heroCallBtn: "Call Now — 213-729-5437",
+      heroTextBtn: "Text to Book",
+      proof1: "Available 24/7", proof2: "Fast Response Times", proof3: "Local Los Angeles Driver",
+      proof4: "Airport Transportation", proof5: "All of LA County",
+      aboutEyebrow: "About AeroCab", aboutHeadline: "Who We Are",
+      storyTitle: "Our Story",
+      storyText: "[Add your story here — when AeroCab started, why you started it, and what makes this business personal to you.]",
+      missionTitle: "Our Mission",
+      missionText: "[Write your mission statement here — what promise do you make to every rider who calls AeroCab?]",
+      servicesEyebrow: "What We Offer", servicesHeadline: "Transportation Services",
+      s1Title: "Airport Transportation", s1Desc: "Punctual pickups and drop-offs for LAX, Burbank (BUR), and Long Beach (LGB). No surge pricing, no hidden fees.",
+      s2Title: "Local Rides", s2Desc: "Reliable transportation anywhere in Los Angeles County, any time of day or night.",
+      s3Title: "Late Night", s3Desc: "Safe, dependable transport after hours. We operate every night of the week, including weekends and holidays.",
+      s4Title: "Scheduled Pickups", s4Desc: "Plan ahead and book your ride in advance. Medical appointments, flights, events — we'll be there on time.",
+      s5Title: "Food Delivery", s5Desc: "Local food and package pickups delivered with care anywhere in the Los Angeles area.",
+      s6Title: "Alcohol Delivery", s6Desc: "Convenient alcohol delivery within the Los Angeles area. Call to check availability.",
+      ratesEyebrow: "Transparent Pricing", ratesHeadline: "Simple, Flat Rates",
+      ratesSub: "No surge pricing. No hidden fees. What you see is what you pay.",
+      rateUpTo: "Up to", rate1Miles: "3 miles", rate2Miles: "4 miles", rate3Miles: "5 miles", rate4Miles: "6 miles", rate5Miles: "10 miles",
+      howToBookTitle: "How to Book a Ride",
+      howToBookDesc: "AeroCab does not use an app. All rides are booked directly by calling or texting. Planned rides are available — call ahead to schedule your pickup in advance.",
+      bookLine1: 'Call <strong class="text-white">213-729-5437</strong> to book immediately',
+      bookLine2: 'Text <strong class="text-white">213-729-5437</strong> to schedule a ride',
+      bookLine3: "Planned rides available — book days in advance",
+      bookCallBtn: "Call 213-729-5437",
+      whyEyebrow: "Why Choose Us",
+      whyHeadline: "Why Los Angeles Riders Call AeroCab",
+      why1Title: "No app, no surge pricing", why1Desc: "Book directly by phone or text. No algorithms inflating your fare.",
+      why2Title: "Available 24 hours, 7 days a week", why2Desc: "Day, night, weekends, holidays — your driver is always ready.",
+      why3Title: "Planned rides available", why3Desc: "Need a ride tomorrow or next week? Call ahead and it's handled.",
+      why4Title: "Flat rates, no surprises", why4Desc: "Simple, transparent pricing. You know the cost before you ride.",
+      why5Title: "Local driver who knows Los Angeles", why5Desc: "Every route from DTLA to Santa Monica, LAX to Pasadena.",
+      why6Title: "Fully licensed and insured", why6Desc: "Every ride is covered. Your safety is not optional.",
+      whyCallBtn: "Call 213-729-5437",
+      areasEyebrow: "Where We Go",
+      areasHeadline: 'Serving All of <span class="text-accent">Los Angeles</span>',
+      areasPlus: "+ All LA County",
+      locationEyebrow: "Find Us", locationHeadline: "Our Location",
+      locationAddrLabel: "Address", locationHoursLabel: "Hours",
+      locationHours: "Open 24 hours, 7 days a week", locationPhoneLabel: "Phone",
+      locationDirections: "Get Directions in Google Maps",
+      billboardEyebrow: "Available 24 Hours · Los Angeles County",
+      billboardSub: "Call or text anytime — your ride is ready",
+      billboardBtn: "Call Now",
+      footerDesc: "Premium transportation across Los Angeles County, available 24 hours a day.",
+      footerLinksTitle: "Quick Links", footerWhyUs: "Why Choose AeroCab",
+      footerAreas: "Service Areas", footerLocation: "Location",
+      footerAvailTitle: "Availability", footerDays: "Sunday – Saturday",
+      footer24h: "24 Hours", footerBooking: "Booking", footerCallOrText: "Call or Text",
+      footerPlanned: "Planned Rides", footerAvailable: "Available",
+      footerCopyright: "© 2025 AeroCab Los Angeles · 1645 W 36th Pl, Los Angeles, CA 90018 · All drivers fully licensed and insured.",
+      footerPrivacy: "Privacy Policy", footerTerms: "Terms of Service"
+    },
+    es: {
+      pageTitle: "AeroCab | Transporte Premium en Los Ángeles",
+      navServices: "Servicios", navRates: "Tarifas", navWhyUs: "Por Qué Nosotros", navAreas: "Áreas", navCallNow: "Llamar Ahora",
+      heroEyebrow: "Condado de Los Ángeles",
+      heroHeadline: 'Transporte Premium<br/>en Todo <span class="text-accent">Los Ángeles</span>',
+      heroSub: "Traslados al aeropuerto, viajes locales, transporte nocturno y recogidas programadas — disponibles las 24 horas.",
+      heroNote: "Sin aplicación · Llame o envíe un mensaje · Viajes programados disponibles",
+      heroCallBtn: "Llamar Ahora — 213-729-5437",
+      heroTextBtn: "Enviar Mensaje",
+      proof1: "Disponible 24/7", proof2: "Tiempos de Respuesta Rápidos", proof3: "Conductor Local de Los Ángeles",
+      proof4: "Transporte al Aeropuerto", proof5: "Todo el Condado de LA",
+      aboutEyebrow: "Sobre AeroCab", aboutHeadline: "Quiénes Somos",
+      storyTitle: "Nuestra Historia",
+      storyText: "[Agregue su historia aquí — cuándo comenzó AeroCab, por qué lo fundó y qué hace que este negocio sea personal para usted.]",
+      missionTitle: "Nuestra Misión",
+      missionText: "[Escriba su declaración de misión aquí — ¿qué promesa le hace a cada pasajero que llama a AeroCab?]",
+      servicesEyebrow: "Lo Que Ofrecemos", servicesHeadline: "Servicios de Transporte",
+      s1Title: "Transporte al Aeropuerto", s1Desc: "Recogidas y entregas puntuales en LAX, Burbank (BUR) y Long Beach (LGB). Sin precios adicionales, sin cargos ocultos.",
+      s2Title: "Viajes Locales", s2Desc: "Transporte confiable en cualquier lugar del Condado de Los Ángeles, a cualquier hora del día o de la noche.",
+      s3Title: "Transporte Nocturno", s3Desc: "Transporte seguro y confiable después de horas. Operamos todas las noches, incluyendo fines de semana y días festivos.",
+      s4Title: "Recogidas Programadas", s4Desc: "Planifique con anticipación y reserve su viaje. Citas médicas, vuelos, eventos — estaremos ahí a tiempo.",
+      s5Title: "Entrega de Comida", s5Desc: "Recogidas de comida y paquetes locales entregados con cuidado en cualquier lugar del área de Los Ángeles.",
+      s6Title: "Entrega de Alcohol", s6Desc: "Entrega conveniente de alcohol dentro del área de Los Ángeles. Llame para verificar disponibilidad.",
+      ratesEyebrow: "Precios Transparentes", ratesHeadline: "Tarifas Simples y Fijas",
+      ratesSub: "Sin precios adicionales. Sin cargos ocultos. Lo que ve es lo que paga.",
+      rateUpTo: "Hasta", rate1Miles: "3 millas", rate2Miles: "4 millas", rate3Miles: "5 millas", rate4Miles: "6 millas", rate5Miles: "10 millas",
+      howToBookTitle: "Cómo Reservar un Viaje",
+      howToBookDesc: "AeroCab no usa una aplicación. Todos los viajes se reservan directamente llamando o enviando un mensaje. Los viajes planificados están disponibles — llame con anticipación para programar su recogida.",
+      bookLine1: 'Llame al <strong class="text-white">213-729-5437</strong> para reservar de inmediato',
+      bookLine2: 'Envíe un mensaje al <strong class="text-white">213-729-5437</strong> para programar un viaje',
+      bookLine3: "Viajes programados disponibles — reserve con días de anticipación",
+      bookCallBtn: "Llamar al 213-729-5437",
+      whyEyebrow: "Por Qué Elegirnos",
+      whyHeadline: "Por Qué Los Residentes de Los Ángeles Llaman a AeroCab",
+      why1Title: "Sin aplicación, sin precios adicionales", why1Desc: "Reserve directamente por teléfono o mensaje de texto. Sin algoritmos inflando su tarifa.",
+      why2Title: "Disponible 24 horas, 7 días a la semana", why2Desc: "Día, noche, fines de semana, días festivos — su conductor siempre está listo.",
+      why3Title: "Viajes planificados disponibles", why3Desc: "¿Necesita un viaje mañana o la próxima semana? Llame con anticipación y queda resuelto.",
+      why4Title: "Tarifas fijas, sin sorpresas", why4Desc: "Precios simples y transparentes. Conoce el costo antes de viajar.",
+      why5Title: "Conductor local que conoce Los Ángeles", why5Desc: "Cada ruta desde el centro hasta Santa Mónica, desde LAX hasta Pasadena.",
+      why6Title: "Completamente licenciado y asegurado", why6Desc: "Cada viaje está cubierto. Su seguridad no es opcional.",
+      whyCallBtn: "Llamar al 213-729-5437",
+      areasEyebrow: "Dónde Vamos",
+      areasHeadline: 'Sirviendo Todo <span class="text-accent">Los Ángeles</span>',
+      areasPlus: "+ Todo el Condado de LA",
+      locationEyebrow: "Encuéntranos", locationHeadline: "Nuestra Ubicación",
+      locationAddrLabel: "Dirección", locationHoursLabel: "Horario",
+      locationHours: "Abierto 24 horas, 7 días a la semana", locationPhoneLabel: "Teléfono",
+      locationDirections: "Cómo Llegar en Google Maps",
+      billboardEyebrow: "Disponible 24 Horas · Condado de Los Ángeles",
+      billboardSub: "Llame o envíe un mensaje en cualquier momento — su viaje está listo",
+      billboardBtn: "Llamar Ahora",
+      footerDesc: "Transporte premium en todo el Condado de Los Ángeles, disponible las 24 horas del día.",
+      footerLinksTitle: "Enlaces Rápidos", footerWhyUs: "Por Qué Elegir AeroCab",
+      footerAreas: "Áreas de Servicio", footerLocation: "Ubicación",
+      footerAvailTitle: "Disponibilidad", footerDays: "Domingo – Sábado",
+      footer24h: "24 Horas", footerBooking: "Reservas", footerCallOrText: "Llamar o Mensaje",
+      footerPlanned: "Viajes Programados", footerAvailable: "Disponible",
+      footerCopyright: "© 2025 AeroCab Los Ángeles · 1645 W 36th Pl, Los Ángeles, CA 90018 · Todos los conductores están completamente licenciados y asegurados.",
+      footerPrivacy: "Política de Privacidad", footerTerms: "Términos de Servicio"
+    }
+  };
+
+  /* ─── i18n engine ─── */
+  function setLanguage(lang) {
+    const t = translations[lang];
+    if (!t) return;
+
+    // Update text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+
+    // Update innerHTML (for elements with bold/span tags)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // Update page title and html lang attribute
+    document.title = t.pageTitle;
+    document.documentElement.lang = lang;
+
+    // Update toggle button states
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+
+    // Persist preference
+    localStorage.setItem('aerocab-lang', lang);
+  }
+
+  /* ─── Init on load ─── */
+  (function () {
+    const saved = localStorage.getItem('aerocab-lang');
+    const browser = navigator.language.startsWith('es') ? 'es' : 'en';
+    setLanguage(saved || browser);
+  })();
+
+  /* ─── Parallax hero ─── */
+  window.addEventListener('scroll', function () {
     const scrollPos = window.pageYOffset;
     const heroBg = document.querySelector('.parallax-bg');
     if (heroBg) heroBg.style.transform = `translateY(${scrollPos * 0.35}px)`;
   });
 
-  // Scroll reveal
+  /* ─── Scroll reveal ─── */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // Smooth scroll for nav links
+  /* ─── Smooth scroll ─── */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 </script>
