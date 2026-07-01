@@ -6,3 +6,7 @@
 !.dev.vars.example
 .env*
 !.env.example
+one.PNG
+two.PNG
+temp.html
+
